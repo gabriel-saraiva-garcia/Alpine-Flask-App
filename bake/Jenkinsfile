@@ -1,0 +1,17 @@
+
+pipeline {
+    agent any
+    stages {
+        stage ('git push'){
+            steps {
+                git branch: 'main', url: 'https://github.com/gabriel-saraiva-garcia/Alpine-Flask-App.git'
+            }   
+        }
+
+        stage ('build') {
+            steps {
+                sh 'docker build -t flask .'
+            }
+        }
+    }
+}
